@@ -62,7 +62,7 @@ body, html {
 }
 
 .site {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -86,7 +86,7 @@ body, html {
     box-shadow: 2px 4px 4px black;
     overflow: hidden;
     height: auto;
-    width: 300px;
+    width: 400px;
     margin: 10px;
     border: none;
     border-radius: 20px;
@@ -102,7 +102,7 @@ body, html {
 img {
     object-fit: cover;
     height: auto;
-    width: 300px;
+    width: 400px;
     border: none;
     border-radius: 20px;
 }
@@ -158,69 +158,4 @@ img {
         transform: translateY(100vh);
         opacity: 0;
     }
-}
-
-@media (width <= 450px) {
-
-    .header {
-        background-color: #f7f7f7;
-        color: #000;
-        text-align: center;
-        padding: 20px 0;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 1.0);
-        position: sticky;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-    }
-    
-    .footer {
-        background-color: #f7f7f7;
-        color: #000;
-        text-align: center;
-        padding: 20px 0;
-        position: sticky;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        box-shadow: 0 -5px 10px rgba(0, 0, 0, 1.0);
-        z-index: 1000;
-    }
-
-    .carrossel {
-        box-shadow: 2px 4px 4px black;
-        overflow: hidden;
-        height: auto;
-        width: 200px;
-        margin: 10px;
-        border: none;
-        border-radius: 20px;
-    }
-
-    img {
-        object-fit: cover;
-        height: auto;
-        width: 200px;
-        border: none;
-        border-radius: 20px;
-    }
-
-    #timer {
-        margin-top: 15px;
-        font-size: 20px;
-        color: #2a2a2a;
-        text-align: center;
-        border: 2px solid black;
-        background-color: rgb(255, 255, 255);
-        border-radius: 50px;
-        margin: 15px;
-
-    }
-    
-    #count {
-        font-weight: bold;
-        color: #000000;
-    }
-    
 }
