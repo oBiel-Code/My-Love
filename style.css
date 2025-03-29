@@ -1,0 +1,226 @@
+.fundo {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background: linear-gradient(45deg, #8d02e3, #03005b);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #009dff, #b900d6);
+    color: rgb(255, 255, 255);
+    border: 3px solid black;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 1.0);
+    font-size: 35px;
+}
+
+
+button:hover {
+    background: linear-gradient(45deg, #009dff, #b900d6);
+    opacity: 80%;
+    box-shadow: 7px 7px 14px rgba(0, 0, 0, 1.5);
+}
+
+
+body, html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    height: 100%;
+}
+
+.header {
+    background-color: #f7f7f7;
+    color: #000;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1.0);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.footer {
+    background-color: #f7f7f7;
+    color: #000;
+    text-align: center;
+    padding: 20px 0;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 1.0);
+    z-index: 1000;
+}
+
+.site {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #8d02e3, #03005b);
+    flex-direction: column;
+}
+
+.texto {
+    padding: 15px;
+    margin: 15px;
+}
+
+.imagem-centralizada {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.carrossel {
+    box-shadow: 2px 4px 4px black;
+    overflow: hidden;
+    height: auto;
+    width: 300px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 25px;
+}
+
+.conteiner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+
+img {
+    object-fit: cover;
+    height: auto;
+    width: 300px;
+    border: none;
+    border-radius: 20px;
+}
+
+#timer {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #2a2a2a;
+    text-align: center;
+    border: 2px solid black;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    padding: 10px;
+    margin: 15px;
+    margin-bottom: 25px;
+}
+
+#count {
+    font-weight: bold;
+    color: #000000;
+}
+
+.audio {
+    border: 1px solid black;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+#emoji-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none; 
+}
+
+.emoji {
+    position: absolute;
+    font-size: 2rem;
+    top: -5%;
+    white-space: nowrap;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-10%);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+@media (width <= 450px) {
+
+    .header {
+        background-color: #f7f7f7;
+        color: #000;
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 1.0);
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    
+    .footer {
+        background-color: #f7f7f7;
+        color: #000;
+        text-align: center;
+        padding: 20px 0;
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 -5px 10px rgba(0, 0, 0, 1.0);
+        z-index: 1000;
+    }
+
+    .carrossel {
+        box-shadow: 2px 4px 4px black;
+        overflow: hidden;
+        height: auto;
+        width: 200px;
+        margin: 10px;
+        border: none;
+        border-radius: 20px;
+    }
+
+    img {
+        object-fit: cover;
+        height: auto;
+        width: 200px;
+        border: none;
+        border-radius: 20px;
+    }
+
+    #timer {
+        margin-top: 15px;
+        font-size: 20px;
+        color: #2a2a2a;
+        text-align: center;
+        border: 2px solid black;
+        background-color: rgb(255, 255, 255);
+        border-radius: 50px;
+        margin: 15px;
+
+    }
+    
+    #count {
+        font-weight: bold;
+        color: #000000;
+    }
+    
+}
