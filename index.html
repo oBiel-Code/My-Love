@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aperte o Botão</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Eu Te Amo</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#8d02e3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="msapplication-tap-highlight" content="no">
 </head>
-<body class="fundo">
-    <a href="site.html">
-        <button>Clique Aqui</button>
-    </a>
+<body>
+  <div class="landing-container">
+    <div class="particles" id="particles"></div>
+    <div class="light-effect"></div>
+    <div class="floating-hearts" id="floating-hearts"></div>
+    
+    <div class="content">
+      <h1 class="title">Eu Te Amo</h1>
+      <a href="site.html">
+        <button class="landing-button" id="main-button">Clique Aqui</button>
+      </a>
+      <div class="messages-container" id="messages-container">
+        <!-- As mensagens serão inseridas dinamicamente pelo JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>

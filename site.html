@@ -1,54 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eu Te Amo</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Eu Te Amo</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#8d02e3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="msapplication-tap-highlight" content="no">
+</head>
+<body>
+  <div class="page-container">
+    <!-- HEADER -->
+    <header class="header" id="site-header">
+      <h1>🖤 I Love You So 🖤</h1>
+      <div class="audio-container">
+        <audio class="audio" controls autoplay loop playsinline preload="metadata">
+          <source src="audio/The Walters -- I Love You So.mp3" type="audio/mp3">
+          Seu navegador não suporta áudio HTML5.
+        </audio>
+      </div>
+    </header>
 
-  <header class="header">
-    <h1>🖤 I Love You So 🖤</h1>
-    <audio class="audio" controls autoplay loop>
-      <source src="audio/The Walters -- I Love You So.mp3" type="audio/mp3" />
-    </audio>
-  </header>
-
-  <body class="site">
-
-    <div id="emoji-container"></div>
-
-    <div class="carrossel">
-      <div class="conteiner" id="img">
-          <img src="imgs/Gi e Eu.jpg" alt="Imagem 1"/>
-          <img src="imgs/Gi e Eu 2.jpg" alt="Imagem 2"/>
-          <img src="imgs/Gi e Eu 3.jpeg" alt="Imagem 3"/>
-          <img src="imgs/Gi e Eu 4.jpg" alt="Imagem 4"/>
-          <img src="imgs/Gi e Eu 5.jpg" alt="Imagem 5"/>
-          <img src="imgs/Gi e Eu 6.jpg" alt="Imagem 6"/>
-          <img src="imgs/Gi e Eu 7.jpg" alt="Imagem 7"/>
+    <!-- MAIN CONTENT -->
+    <main class="site">
+      <div id="emoji-container"></div>
+      
+      <div class="site-content">
+        <div class="carrossel-container">
+          <div class="carrossel">
+            <div class="conteiner" id="img">
+              <div class="slide">
+                <img src="imgs/Gi e Eu.jpg" alt="Imagem 1" class="carousel-image" loading="lazy">
+              </div>
+              <div class="slide">
+                <img src="imgs/Gi e Eu 2.jpg" alt="Imagem 2" class="carousel-image" loading="lazy">
+              </div>
+              <div class="slide">
+                <img src="imgs/Gi e Eu 3.jpeg" alt="Imagem 3" class="carousel-image" loading="lazy">
+              </div>
+              <div class="slide">
+                <img src="imgs/Gi e Eu 4.jpg" alt="Imagem 4" class="carousel-image" loading="lazy">
+              </div>
+              <div class="slide">
+                <img src="imgs/Gi e Eu 5.jpg" alt="Imagem 5" class="carousel-image" loading="lazy">
+              </div>
+              <div class="slide">
+                <img src="imgs/Gi e Eu 6.jpg" alt="Imagem 6" class="carousel-image" loading="lazy">
+              </div>
+              <div class="slide">
+                <img src="imgs/Gi e Eu 7.jpg" alt="Imagem 7" class="carousel-image" loading="lazy">
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-controls">
+            <div class="carousel-arrow prev-arrow" id="prev-arrow" role="button" aria-label="Slide anterior">
+              <svg viewBox="0 0 24 24">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </div>
+            <div class="carousel-arrow next-arrow" id="next-arrow" role="button" aria-label="Próximo slide">
+              <svg viewBox="0 0 24 24">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              </svg>
+            </div>
+          </div>
         </div>
-    </div>
+        
+        <div class="carousel-indicators" id="indicators" role="tablist"></div>
 
-    <div id="timer">
-        <span id="days">365</span> dias
-        <span id="hours">0</span> horas
-        <span id="minutes">0</span> minutos
-        <span id="seconds">0</span> segundos
-    </div>
+        <div id="timer" aria-label="Contador de tempo">
+          <div class="time-unit">
+            <span id="days" class="time-value">0</span>
+            <span class="time-label">dias</span>
+          </div>
+          <div class="time-unit">
+            <span id="hours" class="time-value">0</span>
+            <span class="time-label">horas</span>
+          </div>
+          <div class="time-unit">
+            <span id="minutes" class="time-value">0</span>
+            <span class="time-label">minutos</span>
+          </div>
+          <div class="time-unit">
+            <span id="seconds" class="time-value">0</span>
+            <span class="time-label">segundos</span>
+          </div>
+        </div>
+      </div>
+    </main>
 
-  </body>
+    <!-- FOOTER - Garantindo que seja visível -->
+    <footer class="footer" id="site-footer">
+      <h2>🖤 Eu Te Amo 🖤</h2>
+      <h4 class="texto">
+        Amor,
 
-  <footer class="footer">
-    <h2>🖤 Eu Te Amo 🖤</h2>
-    <h4 class="texto">
-      Você é tudo para mim nessa vida meu amor, não sei o que eu seria sem
-      você ao meu lado! Obrigado por tudo, eu te amo muito muito muitoo.
-      Agradeço por todos momentos juntos, todos presentes, cada risada, cada
-      choro, cada comida que você fez, por cada coisinha minúscula que mostra
-      que você realmente me ama e sempre vai amar!
-    </h4>
-  </footer>
+        Você é tudo pra mim, sério mesmo. Eu olho pra nossa história e só consigo sentir gratidão. Gratidão por ter você na minha vida, por cada momento que já vivemos e por tudo que ainda vamos viver. Não sei o que seria de mim sem você do meu lado… de verdade.
+        
+        Obrigado por cada risada, cada abraço apertado, cada chorinho que terminou em colo, cada vez que você fez comida com aquele seu jeitinho todo especial (mesmo quando eu digo que "nem ficou bom", mas sempre tá maravilhoso). Obrigado por cada presentinho, cada surpresa, cada mensagem boba no meio do dia. Mas, acima de tudo, obrigado por ser você.
+        
+        Você, minha cabeçuda linda, é a melhor parte dos meus dias. E até quando a gente briga por besteira, no fim eu só penso em como eu te amo e como eu tenho sorte de ter você. Teu jeitinho de cuidar de mim, mesmo quando tenta fingir que é durona, me ganha sempre.
+        
+        Eu te amo muito. Tipo, muito mesmo. Mais do que consigo escrever aqui. E só quero que você saiba que tudo que a gente vive, cada detalhe, fica guardado em mim com o maior carinho do mundo.
+        
+        Quero mais e mais momentos com você. Mais risadas, mais planos doidos, mais domingos preguiçosos, mais comidinhas que você faz, mais abraços longos, mais tudo com você.
+        
+        Te amo, amor. Te amo, cabeçuda. Te amo de um jeito que só cresce.
+        
+        Sempre seu,
+        Gabriel
+      </h4>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
+</body>
 </html>

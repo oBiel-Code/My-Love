@@ -1,0 +1,355 @@
+/* Importação de fontes - adicionando mais variações de peso */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* Reset e estilos base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Paleta de cores refinada */
+  --primary-color: #8d02e3;
+  --primary-dark: #03005b;
+  --secondary-color: #009dff;
+  --secondary-dark: #b900d6;
+  --accent-color: #ff3e7f;
+  --accent-light: #ff71a3;
+  --text-color: #333;
+  --light-text: #fff;
+  --bg-color: #f0f0f0;
+
+  /* Gradientes */
+  --primary-gradient: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  --secondary-gradient: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+  --accent-gradient: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 15px rgba(141, 2, 227, 0.5);
+
+  /* Transições */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+body,
+html {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--primary-gradient);
+  color: var(--light-text);
+}
+
+/* Página inicial com animações e interatividade */
+.landing-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de partículas */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Efeito de luz radial */
+.light-effect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0.8;
+  z-index: 1;
+  animation: pulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+/* Conteúdo central */
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Título animado */
+.title {
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    90deg,
+    var(--secondary-color),
+    var(--accent-color),
+    var(--secondary-dark),
+    var(--primary-color)
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 8s ease infinite;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  letter-spacing: 2px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards 0.5s;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Botão principal com efeitos avançados */
+.landing-button {
+  position: relative;
+  padding: 1.2rem 3rem;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--light-text);
+  background: var(--secondary-gradient);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 0 5px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards 1s;
+  margin-bottom: 1rem;
+}
+
+.landing-button:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 0 5px rgba(255, 255, 255, 0.2), 0 0 30px rgba(141, 2, 227, 0.6);
+}
+
+.landing-button:active {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+/* Efeito de brilho no hover */
+.landing-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s;
+}
+
+.landing-button:hover::before {
+  left: 100%;
+  transition: 0.5s;
+}
+
+/* Efeito de ondulação ao clicar */
+.landing-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.landing-button:active::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+/* Mensagens rotativas */
+.messages-container {
+  position: relative;
+  height: 2em;
+  margin-top: 1rem;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards 1.5s;
+}
+
+.message {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  word-spacing: 0.3em;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+
+.message.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animações de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efeito de coração flutuante */
+.floating-hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.heart {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: floatHeart linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Efeito de cursor personalizado */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  mix-blend-mode: difference;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+  }
+
+  .landing-button {
+    padding: 1rem 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1rem;
+  }
+
+  .landing-button {
+    padding: 0.8rem 2rem;
+  }
+
+  /* Desativar alguns efeitos em dispositivos muito pequenos */
+  .custom-cursor,
+  .cursor-follower {
+    display: none;
+  }
+}
