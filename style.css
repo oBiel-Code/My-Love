@@ -467,22 +467,22 @@ img {
 }
 
 .indicator {
-  width: 12px;
-  height: 12px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(196, 137, 247, 0.3);
   cursor: pointer;
   transition: all var(--transition-normal);
 }
 
 .indicator:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(230, 200, 255, 0.5);
 }
 
 .indicator.active {
-  background-color: white;
+  background-color: rgb(169, 48, 255);
   transform: scale(1.2);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(207, 136, 255, 0.5);
 }
 
 /* Timer redesenhado e aprimorado */
@@ -716,8 +716,8 @@ img {
   }
 
   .indicator {
-    width: 2px;
-    height: 2px;
+    width: 1rem;
+    height: 1rem;
   }
 
   .carrossel-container {
@@ -776,8 +776,8 @@ img {
   }
 
   .indicator {
-    width: 2px;
-    height: 2px;
+    width: 1rem;
+    height: 1rem;
     margin: 0 5px;
   }
 }

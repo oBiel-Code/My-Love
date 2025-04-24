@@ -459,8 +459,8 @@ function enhanceTouchExperience() {
   // Aumentar áreas de toque para elementos interativos
   const touchTargets = document.querySelectorAll(".carousel-arrow, .indicator, .landing-button")
   touchTargets.forEach((el) => {
-    el.style.minHeight = "44px"
-    el.style.minWidth = "44px"
+    el.style.minHeight = "5px"
+    el.style.minWidth = "5px"
   })
 
   // Adicionar feedback tátil para elementos clicáveis
