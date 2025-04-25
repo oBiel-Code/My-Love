@@ -60,6 +60,7 @@ html {
   align-items: center;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 /* Efeito de partículas */
@@ -327,6 +328,158 @@ html {
   transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
 }
 
+/* Add these enhanced background animations after the existing animations */
+
+/* Enhanced Particle Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) rotate(5deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-50px) translateX(-20px) rotate(-5deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-30px) translateX(-30px) rotate(3deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.5;
+  }
+}
+
+/* Enhanced Light Effect */
+.light-effect {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(141, 2, 227, 0.1) 30%,
+    rgba(0, 157, 255, 0.05) 60%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  animation: enhanced-pulse 15s ease-in-out infinite alternate;
+}
+
+@keyframes enhanced-pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(1) rotate(0deg);
+  }
+  33% {
+    opacity: 0.5;
+    transform: scale(1.2) rotate(2deg);
+  }
+  66% {
+    opacity: 0.7;
+    transform: scale(1.3) rotate(-2deg);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1.1) rotate(1deg);
+  }
+}
+
+/* Cosmic Background */
+.landing-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(141, 2, 227, 0.4) 0%,
+    rgba(3, 0, 91, 0.8) 70%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  z-index: 0;
+  animation: cosmic-pulse 15s infinite alternate;
+}
+
+@keyframes cosmic-pulse {
+  0% {
+    opacity: 0.7;
+    background-position: 0% 0%;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.7;
+    background-position: 100% 100%;
+  }
+}
+
+/* Nebula Effect */
+.landing-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 30% 50%, rgba(185, 0, 214, 0.3) 0%, rgba(185, 0, 214, 0) 50%),
+    radial-gradient(circle at 70% 30%, rgba(0, 157, 255, 0.3) 0%, rgba(0, 157, 255, 0) 50%);
+  background-blend-mode: overlay;
+  opacity: 0.4;
+  z-index: 0;
+  animation: nebula-drift 30s infinite alternate;
+}
+
+@keyframes nebula-drift {
+  0% {
+    background-position: 0% 0%;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 50% 50%;
+    transform: scale(1.05);
+  }
+  100% {
+    background-position: 100% 100%;
+    transform: scale(1);
+  }
+}
+
+/* Enhanced Particle Styles */
+.particle {
+  filter: blur(2px);
+  mix-blend-mode: screen;
+  transform-origin: center center;
+}
+
+/* Glowing Hearts */
+.heart {
+  filter: drop-shadow(0 0 10px rgba(255, 62, 127, 0.7));
+  animation: enhanced-heart-float linear infinite;
+}
+
+@keyframes enhanced-heart-float {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg) scale(1);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 5px rgba(255, 62, 127, 0.5));
+  }
+  50% {
+    transform: translateY(50vh) translateX(50px) rotate(180deg) scale(1.2);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 15px rgba(255, 62, 127, 0.8));
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px) rotate(360deg) scale(0.8);
+    opacity: 0;
+    filter: drop-shadow(0 0 5px rgba(255, 62, 127, 0.5));
+  }
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .content {
@@ -335,6 +488,26 @@ html {
 
   .landing-button {
     padding: 1rem 2.5rem;
+  }
+
+  .landing-container::before,
+  .landing-container::after {
+    animation-duration: 20s;
+  }
+
+  .light-effect {
+    animation-duration: 10s;
+  }
+
+  @keyframes enhanced-heart-float {
+    0% {
+      transform: translateY(100vh) translateX(0) rotate(0deg) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(-100px) translateX(50px) rotate(360deg) scale(0.8);
+      opacity: 0;
+    }
   }
 }
 
@@ -351,5 +524,22 @@ html {
   .custom-cursor,
   .cursor-follower {
     display: none;
+  }
+}
+
+/* Low-end device optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .landing-container::before,
+  .landing-container::after,
+  .light-effect {
+    animation: none !important;
+  }
+
+  .particle {
+    animation-duration: 30s !important;
+  }
+
+  .heart {
+    animation-duration: 10s !important;
   }
 }

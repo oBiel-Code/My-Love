@@ -369,7 +369,519 @@ function createEmoji() {
   }, duration * 1000)
 }
 
-// Otimizar carregamento de imagens
+// NOVO CÓDIGO - INÍCIO
+// Inicializar o fundo interativo
+function initInteractiveBackground() {
+  // Criar elementos do fundo
+  createAnimatedBackground()
+  createWaves()
+  createStars()
+  createShootingStars()
+  createGlowOrbs()
+  createFog()
+  createBubbles()
+  createGridLines()
+  
+  // Adicionar interatividade ao movimento do mouse
+  addMouseInteractivity()
+}
+
+// Criar o container do fundo animado
+function createAnimatedBackground() {
+  const landingContainer = document.querySelector('.landing-container')
+  if (!landingContainer) return
+  
+  const animatedBackground = document.createElement('div')
+  animatedBackground.classList.add('animated-background')
+  landingContainer.prepend(animatedBackground)
+}
+
+// Criar efeito de ondas
+function createWaves() {
+  const animatedBackground = document.querySelector('.animated-background')
+  if (!animatedBackground) return
+  
+  const waveContainer = document.createElement('div')
+  waveContainer.classList.add('wave-container')
+  
+  // Criar 3 ondas com diferentes velocidades
+  for (let i = 0; i < 3; i++) {
+    const wave = document.createElement('div')
+    wave.classList.add('wave')
+    waveContainer.appendChild(wave)
+  }
+  
+  animatedBackground.appendChild(waveContainer)
+}
+
+// Criar efeito de estrelas
+function createStars() {
+  const animatedBackground = document.querySelector('.animated-background')
+  if (!animatedBackground) return
+  
+  const starsContainer = document.createElement('div')
+  starsContainer.classList.add('stars-container')
+  
+  // Reduzir número de estrelas em dispositivos móveis
+  const starCount = isMobile ? 50 : 100
+  
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div')
+    star.classList.add('star')
+    
+    // Tamanho aleatório
+    const size = Math.random() * 3 + 1
+    star.style.width = `${size}px`
+    star.style.height = `${size}px`
+    
+    // Posição aleatória
+    star.style.left = `${Math.random() * 100}%`
+    star.style.top = `${Math.random() * 100}%`
+    
+    // Duração da animação aleatória
+    const duration = Math.random() * 3 + 2
+    star.style.setProperty('--twinkle-duration', `${duration}s`)
+    
+    starsContainer.appendChild(star)
+  }
+  
+  animatedBackground.appendChild(starsContainer)
+}
+
+// Criar estrelas cadentes
+function createShootingStars() {
+  if (isMobile && isLowEndDevice) return // Pular em dispositivos móveis de baixo desempenho
+  
+  const animatedBackground = document.querySelector('.animated-background')
+  if (!animatedBackground) return
+  
+  // Criar 5 estrelas cadentes
+  for (let i = 0; i < 5; i++) {
+    const shootingStar = document.createElement('div')
+    shootingStar.classList.add('shooting-star')
+    
+    // Ângulo e atraso aleatórios
+    const angle = Math.random() * 20 - 10
+    const delay = Math.random() * 15
+    const slope = Math.tan(angle * Math.PI / 180)
+    
+    shootingStar.style.setProperty('--angle', `${angle}deg`)
+    shootingStar.style.setProperty('--delay', `${delay}s`)
+    shootingStar.style.setProperty('--slope', slope)
+    
+    animatedBackground.appendChild(shootingStar)
+  }
+}
+
+// Criar orbes brilhantes
+function createGlowOrbs() {
+  const animatedBackground = document.querySelector('.animated-background')
+  if (!animatedBackground) return
+  
+  // Criar 3 orbes brilhantes
+  for (let i = 0; i < 3; i++) {
+    const glowOrb = document.createElement('div')
+    glowOrb.classList.add('glow-orb')
+    animatedBackground.appendChild(glowOrb)
+  }
+}
+
+// Criar efeito de névoa
+function createFog() {
+  if (isMobile && isLowEndDevice) return // Pular em dispositivos móveis de baixo desempenho
+  
+  const animatedBackground = document.querySelector('.animated-background')
+  if (!animatedBackground) return
+  
+  const fogContainer = document.createElement('div')
+  fogContainer.classList.add('fog-container')
+  
+  // Criar 2 camadas de névoa
+  for (let i = 0; i < 2; i++) {
+    const fog = document.createElement('div')
+    fog.classList.add('fog')
+    fogContainer.appendChild(fog)
+  }
+  
+  animatedBackground.appendChild(fogContainer)
+}
+
+// Criar efeito de bolhas
+function createBubbles() {
+  if (isMobile && isLowEndDevice) return // Pular em dispositivos móveis de baixo desempenho
+  
+  const animatedBackground = document.querySelector('.animated-background')
+  if (!animatedBackground) return
+  
+  const bubbleContainer = document.createElement('div')
+  bubbleContainer.classList.add('bubble-container')
+  
+  // Criar bolhas em intervalos
+  setInterval(() => {
+    if (document.hidden || isScrolling) return
+    
+    const bubble = document.createElement('div')
+    bubble.classList.add('bubble')
+    
+    // Tamanho aleatório
+    const size = Math.random() * 30 + 10
+    bubble.style.width = `${size}px`
+    bubble.style.height = `${size}px`
+    
+    // Posição horizontal aleatória
+    bubble.style.left = `${Math.random() * 100}%`
+    
+    // Duração e desvio aleatórios
+    const duration = Math.random() * 10 + 10
+    const drift = Math.random() * 100 - 50
+    const scaleEnd = Math.random() * 0.5 + 0.5
+    const opacity = Math.random() * 0.3 + 0.2
+    
+    bubble.style.setProperty('--rise-duration', `${duration}s`)
+    bubble.style.setProperty('--drift', `${drift}px`)
+    bubble.style.setProperty('--scale-end', scaleEnd)
+    bubble.style.setProperty('--bubble-opacity', opacity)
+    
+    bubbleContainer.appendChild(bubble)
+    
+    // Remover após a animação
+    setTimeout(() => {
+      if (bubble.parentNode === bubbleContainer) {
+        bubble.remove()
+      }
+    }, duration * 1000)
+  }, isMobile ? 1000 : 500)
+  
+  animatedBackground.appendChild(bubbleContainer)
+}
+
+// Criar linhas de grade
+function createGridLines() {
+  if (isMobile) return // Pular em dispositivos móveis
+  
+  const animatedBackground = document.querySelector('.animated-background')
+  if (!animatedBackground) return
+  
+  const gridLines = document.createElement('div')
+  gridLines.classList.add('grid-lines')
+  
+  // Criar linhas horizontais
+  for (let i = 0; i < 10; i++) {
+    const line = document.createElement('div')
+    line.classList.add('grid-horizontal')
+    line.style.top = `${i * 10}%`
+    gridLines.appendChild(line)
+  }
+  
+  // Criar linhas verticais
+  for (let i = 0; i < 10; i++) {
+    const line = document.createElement('div')
+    line.classList.add('grid-vertical')
+    line.style.left = `${i * 10}%`
+    gridLines.appendChild(line)
+  }
+  
+  animatedBackground.appendChild(gridLines)
+}
+
+// Adicionar interatividade ao movimento do mouse
+function addMouseInteractivity() {
+  if (isMobile) return // Pular em dispositivos móveis
+  
+  const landingContainer = document.querySelector('.landing-container')
+  if (!landingContainer) return
+  
+  // Criar container para partículas interativas
+  const interactiveParticles = document.createElement('div')
+  interactiveParticles.classList.add('interactive-particles')
+  landingContainer.appendChild(interactiveParticles)
+  
+  // Adicionar evento de movimento do mouse
+  landingContainer.addEventListener('mousemove', (e) => {
+    if (isScrolling) return
+    
+    // Limitar a criação de partículas para melhor desempenho
+    if (Math.random() > 0.3) return
+    
+    const mouseX = e.clientX
+    const mouseY = e.clientY
+    
+    // Criar partícula
+    const particle = document.createElement('div')
+    particle.classList.add('mouse-particle')
+    particle.style.left = `${mouseX}px`
+    particle.style.top = `${mouseY}px`
+    
+    interactiveParticles.appendChild(particle)
+    
+    // Remover após a animação
+    setTimeout(() => {
+      if (particle.parentNode === interactiveParticles) {
+        particle.remove()
+      }
+    }, 1500)
+  })
+  
+  // Efeito de paralaxe suave
+  landingContainer.addEventListener('mousemove', (e) => {
+    if (isScrolling || isLowEndDevice) return
+    
+    const mouseX = e.clientX / window.innerWidth
+    const mouseY = e.clientY / window.innerHeight
+    
+    // Mover elementos com base na posição do mouse
+    const glowOrbs = document.querySelectorAll('.glow-orb')
+    glowOrbs.forEach((orb, index) => {
+      const factor = (index + 1) * 10
+      requestAnimationFrame(() => {
+        orb.style.transform = `translate(${(mouseX - 0.5) * factor}px, ${(mouseY - 0.5) * factor}px)`
+      })
+    })
+  })
+}
+
+// Create starfield background
+function createStarfield() {
+  const site = document.querySelector('.site');
+  if (!site) return;
+  
+  const starfield = document.createElement('div');
+  starfield.classList.add('starfield');
+  
+  // Reduce star count on mobile
+  const starCount = isMobile ? 100 : 200;
+  
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    
+    // Random size
+    const size = Math.random() * 2 + 1;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    
+    // Random position
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    
+    // Random twinkle duration
+    const duration = Math.random() * 4 + 2;
+    star.style.setProperty('--twinkle-duration', `${duration}s`);
+    
+    starfield.appendChild(star);
+  }
+  
+  site.appendChild(starfield);
+}
+
+// Create shooting stars
+function createShootingStars() {
+  if (isMobile && isLowEndDevice) return; // Skip on low-end mobile devices
+  
+  const site = document.querySelector('.site');
+  if (!site) return;
+  
+  // Create container for shooting stars
+  const shootingStarsContainer = document.createElement('div');
+  shootingStarsContainer.classList.add('shooting-stars-container');
+  shootingStarsContainer.style.position = 'fixed';
+  shootingStarsContainer.style.top = '0';
+  shootingStarsContainer.style.left = '0';
+  shootingStarsContainer.style.width = '100%';
+  shootingStarsContainer.style.height = '100%';
+  shootingStarsContainer.style.overflow = 'hidden';
+  shootingStarsContainer.style.pointerEvents = 'none';
+  shootingStarsContainer.style.zIndex = '0';
+  
+  site.appendChild(shootingStarsContainer);
+  
+  // Create shooting stars at random intervals
+  function createShootingStar() {
+    if (document.hidden || isScrolling) return;
+    
+    const shootingStar = document.createElement('div');
+    shootingStar.classList.add('shooting-star');
+    
+    // Random angle and position
+    const angle = Math.random() * 30 - 60; // -60 to -30 degrees
+    const yPos = Math.random() * 70; // Top 70% of the screen
+    const delay = Math.random() * 2;
+    const slope = Math.tan(angle * Math.PI / 180);
+    
+    shootingStar.style.top = `${yPos}%`;
+    shootingStar.style.setProperty('--angle', `${angle}deg`);
+    shootingStar.style.setProperty('--delay', `${delay}s`);
+    shootingStar.style.setProperty('--slope', slope);
+    
+    shootingStarsContainer.appendChild(shootingStar);
+    
+    // Remove after animation
+    setTimeout(() => {
+      if (shootingStar.parentNode === shootingStarsContainer) {
+        shootingStar.remove();
+      }
+    }, 6000); // Match animation duration
+  }
+  
+  // Create shooting stars periodically
+  setInterval(() => {
+    if (Math.random() > 0.7) { // 30% chance each interval
+      createShootingStar();
+    }
+  }, 3000);
+}
+
+// Create aurora effect
+function createAuroraEffect() {
+  const site = document.querySelector('.site');
+  if (!site) return;
+  
+  const aurora = document.createElement('div');
+  aurora.classList.add('aurora');
+  
+  // Create multiple aurora beams
+  const beamCount = isMobile ? 3 : 5;
+  
+  for (let i = 0; i < beamCount; i++) {
+    const beam = document.createElement('div');
+    beam.classList.add('aurora-beam');
+    
+    // Random position and properties
+    beam.style.top = `${i * 25}%`;
+    beam.style.animationDelay = `${i * 2}s`;
+    
+    // Random color
+    const hue = Math.random() * 60 + 240; // Blue to purple range
+    beam.style.background = `linear-gradient(90deg, 
+      hsla(${hue}, 100%, 50%, 0) 0%, 
+      hsla(${hue}, 100%, 70%, 0.3) 50%, 
+      hsla(${hue}, 100%, 50%, 0) 100%)`;
+    
+    aurora.appendChild(beam);
+  }
+  
+  site.appendChild(aurora);
+}
+
+// Create floating light orbs
+function createLightOrbs() {
+  const site = document.querySelector('.site');
+  if (!site) return;
+  
+  // Reduce orb count on mobile
+  const orbCount = isMobile ? 3 : 5;
+  
+  for (let i = 0; i < orbCount; i++) {
+    const orb = document.createElement('div');
+    orb.classList.add('light-orb');
+    
+    // Random size
+    const size = Math.random() * 150 + 100;
+    orb.style.width = `${size}px`;
+    orb.style.height = `${size}px`;
+    
+    // Random position
+    orb.style.left = `${Math.random() * 80 + 10}%`;
+    orb.style.top = `${Math.random() * 80 + 10}%`;
+    
+    // Random color
+    const colors = [
+      'rgba(141, 2, 227, 0.3)',
+      'rgba(0, 157, 255, 0.3)',
+      'rgba(185, 0, 214, 0.3)',
+      'rgba(255, 62, 127, 0.3)'
+    ];
+    orb.style.background = `radial-gradient(circle, ${colors[i % colors.length]} 0%, rgba(255, 255, 255, 0) 70%)`;
+    
+    // Animation
+    orb.style.animation = `float ${15 + i * 5}s ease-in-out infinite alternate`;
+    orb.style.animationDelay = `${i * 2}s`;
+    
+    site.appendChild(orb);
+  }
+}
+
+// Create interactive mouse effect
+function createMouseInteractivity() {
+  if (isMobile) return; // Skip on mobile devices
+  
+  const site = document.querySelector('.site');
+  if (!site) return;
+  
+  // Create container for mouse particles
+  const particlesContainer = document.createElement('div');
+  particlesContainer.style.position = 'fixed';
+  particlesContainer.style.top = '0';
+  particlesContainer.style.left = '0';
+  particlesContainer.style.width = '100%';
+  particlesContainer.style.height = '100%';
+  particlesContainer.style.pointerEvents = 'none';
+  particlesContainer.style.zIndex = '1';
+  
+  site.appendChild(particlesContainer);
+  
+  // Track mouse movement
+  site.addEventListener('mousemove', (e) => {
+    if (isScrolling || Math.random() > 0.3) return; // Limit particle creation
+    
+    const particle = document.createElement('div');
+    particle.classList.add('glow-particle');
+    
+    // Random size
+    const size = Math.random() * 10 + 5;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    
+    // Position at mouse
+    particle.style.left = `${e.clientX}px`;
+    particle.style.top = `${e.clientY}px`;
+    
+    // Random color
+    const colors = [
+      'rgba(141, 2, 227, 0.8)',
+      'rgba(0, 157, 255, 0.8)',
+      'rgba(185, 0, 214, 0.8)',
+      'rgba(255, 62, 127, 0.8)'
+    ];
+    particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]} 0%, rgba(255, 255, 255, 0) 70%)`;
+    
+    particlesContainer.appendChild(particle);
+    
+    // Remove after animation
+    setTimeout(() => {
+      if (particle.parentNode === particlesContainer) {
+        particle.remove();
+      }
+    }, 3000);
+  });
+  
+  // Parallax effect on orbs
+  site.addEventListener('mousemove', (e) => {
+    if (isScrolling || isLowEndDevice) return;
+    
+    const mouseX = e.clientX / window.innerWidth - 0.5;
+    const mouseY = e.clientY / window.innerHeight - 0.5;
+    
+    const orbs = document.querySelectorAll('.light-orb');
+    orbs.forEach((orb, index) => {
+      const factor = (index + 1) * 20;
+      requestAnimationFrame(() => {
+        orb.style.transform = `translate(${mouseX * factor}px, ${mouseY * factor}px)`;
+      });
+    });
+  });
+}
+
+// Initialize all new background effects
+function initEnhancedBackground() {
+  createStarfield();
+  createShootingStars();
+  createAuroraEffect();
+  createLightOrbs();
+  createMouseInteractivity();
+}
+
+// Otimizar imagens
 function optimizeImages() {
   // Usar IntersectionObserver para carregar imagens apenas quando visíveis
   if ("IntersectionObserver" in window) {
@@ -675,9 +1187,16 @@ function setupPWASupport() {
     window.deferredPrompt = e
   })
 }
+// NOVO CÓDIGO - FIM
 
 // Executa a função imediatamente ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
+  // Inicializar o novo fundo interativo
+  initInteractiveBackground()
+  
+  // Add our new enhanced background
+  initEnhancedBackground();
+  
   // Iniciar contador com requestAnimationFrame para melhor desempenho
   lastFrameTime = performance.now()
   updateCounterLoop()
